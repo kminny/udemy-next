@@ -41,7 +41,6 @@ export async function getStaticProps() {
 
   return {
     props: {
-      revalidate: 1,
       meetups: meetups.map((meetup) => ({
         title: meetup.title,
         address: meetup.address,
@@ -49,6 +48,7 @@ export async function getStaticProps() {
         id: meetup._id.toString(),
       })),
     },
+    revalidate: 1,
   };
 }
 
