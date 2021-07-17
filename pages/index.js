@@ -41,6 +41,7 @@ export async function getStaticProps() {
 
   return {
     props: {
+      revalidate: 1,
       meetups: meetups.map((meetup) => ({
         title: meetup.title,
         address: meetup.address,
