@@ -1,5 +1,4 @@
 import { MongoClient } from 'mongodb';
-import keys from '../../keys';
 
 // /api/new-meetup
 // POST /api/new-meetup
@@ -9,7 +8,7 @@ async function handler(req, res) {
     const data = req.body;
 
     const client = await MongoClient.connect(
-      `mongodb+srv://${keys.MONGO_ID}:${keys.MONGO_PW}@cluster0.zzics.mongodb.net/meetups?retryWrites=true&w=majority`
+      `mongodb+srv://${process.env.MONGO_ID}:${process.env.MONGO_PW}@cluster0.zzics.mongodb.net/meetups?retryWrites=true&w=majority`
     );
     const db = client.db();
 

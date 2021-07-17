@@ -2,7 +2,6 @@ import { MongoClient, ObjectId } from 'mongodb';
 import Head from 'next/head';
 import { Fragment } from 'react';
 import MeetupDetail from '../../components/meetups/MeetupDetail';
-import keys from '../../keys';
 
 function MeetupDetails(props) {
   return (
@@ -23,7 +22,7 @@ function MeetupDetails(props) {
 
 export async function getStaticPaths() {
   const client = await MongoClient.connect(
-    `mongodb+srv://${keys.MONGO_ID}:${keys.MONGO_PW}@cluster0.zzics.mongodb.net/meetups?retryWrites=true&w=majority`
+    `mongodb+srv://${process.env.MONGO_ID}:${process.env.MONGO_PW}@cluster0.zzics.mongodb.net/meetups?retryWrites=true&w=majority`
   );
   const db = client.db();
 
@@ -48,7 +47,7 @@ export async function getStaticProps(context) {
   const meetupId = context.params.meetupId;
 
   const client = await MongoClient.connect(
-    `mongodb+srv://${keys.MONGO_ID}:${keys.MONGO_PW}@cluster0.zzics.mongodb.net/meetups?retryWrites=true&w=majority`
+    `mongodb+srv://${process.env.MONGO_ID}:${process.env.MONGO_PW}@cluster0.zzics.mongodb.net/meetups?retryWrites=true&w=majority`
   );
   const db = client.db();
 

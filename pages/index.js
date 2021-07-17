@@ -2,7 +2,6 @@ import { MongoClient } from 'mongodb';
 import Head from 'next/head';
 import { Fragment } from 'react';
 import MeetupList from '../components/meetups/MeetupList';
-import keys from '../keys';
 
 function HomePage(props) {
   return (
@@ -30,7 +29,7 @@ function HomePage(props) {
 export async function getStaticProps() {
   // fetch data from an API
   const client = await MongoClient.connect(
-    `mongodb+srv://${keys.MONGO_ID}:${keys.MONGO_PW}@cluster0.zzics.mongodb.net/meetups?retryWrites=true&w=majority`
+    `mongodb+srv://${process.env.MONGO_ID}:${process.env.MONGO_PW}@cluster0.zzics.mongodb.net/meetups?retryWrites=true&w=majority`
   );
   const db = client.db();
 
